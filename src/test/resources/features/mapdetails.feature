@@ -1,4 +1,4 @@
-@mapdetail
+@mapdetail @smoke
 Feature: Map details
 
 
