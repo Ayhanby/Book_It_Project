@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Book It Application" verbose="1">
+    <test name="Book It Application Automated Tests">
+        <packages>
+
+            <package name="com.BookIt.tests.smoke_tests"></package>
+<<<<<<< HEAD
+            <package name="com.BookIt.tests.fucntionality_tests.Login"></package>
+            <package name="com.BookIt.tests.fucntionality_tests.LogOut"></package>
+=======
+            <package name="com.BookIt.tests.funtionality_tests.Login"></package>
+            <package name="com.BookIt.tests.funtionality_tests.LogOut"></package>
+>>>>>>> 2a8bf552c6861f7b347da7079afda2f53ecdf73f
+
+
+        </packages>
+    </test>
+<<<<<<< HEAD
+</suite>
+=======
+</suite>
+>>>>>>> 2a8bf552c6861f7b347da7079afda2f53ecdf73f
