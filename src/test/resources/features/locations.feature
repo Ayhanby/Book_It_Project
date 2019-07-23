@@ -1,4 +1,4 @@
-@location @smoke
+@location
 Feature: campus locations
 
   @va-dark
