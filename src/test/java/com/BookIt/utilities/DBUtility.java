@@ -14,19 +14,21 @@ public class DBUtility {
     private static int rowsCount;
 
 
-    public static void establishConnection(DBType dbType)throws SQLException {
+    public static void establishConnection(DBType dbType)throws SQLException,ClassNotFoundException {
 
         switch (dbType){
             case ORACLE:
-                connection= DriverManager.getConnection(ConfigurationReader.getProperty("oracledb.url"),
-                        ConfigurationReader.getProperty("oracledb.username"),
-                        ConfigurationReader.getProperty("oracledb.password"));
+                connection= DriverManager.getConnection(ConfigurationReader.getProperty("oracle.url"),
+                        ConfigurationReader.getProperty("oracle.username"),
+                        ConfigurationReader.getProperty("oracle.password"));
 
                 break;
+
             case POSTGRESQL:
+                Class.forName("org.postgresql.Driver");
                 connection= DriverManager.getConnection(ConfigurationReader.getProperty("postgres.url"),
-                        ConfigurationReader.getProperty("postgresdb.username"),
-                        ConfigurationReader.getProperty("postgresdb.password"));
+                        ConfigurationReader.getProperty("postgres.username"),
+                        ConfigurationReader.getProperty("postgres.password"));
 
                 break;
 
@@ -92,6 +94,3 @@ public class DBUtility {
 
     }
 
-enum DBType{
-    ORACLE,POSTGRESQL,MYSQL,MARIADB
-}
