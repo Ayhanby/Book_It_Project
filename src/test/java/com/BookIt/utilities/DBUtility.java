@@ -11,6 +11,7 @@ public class DBUtility {
     private static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
+    private static int rowsCount;
 
 
     public static void establishConnection(DBType dbType)throws SQLException {
@@ -34,6 +35,15 @@ public class DBUtility {
         }
 
     }
+
+    public static int getRowsCount(String sql)throws SQLException{
+
+        statement=connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        resultSet=statement.executeQuery(sql);
+        resultSet.last();
+        return resultSet.getRow();
+    }
+
 
     public static List<Map<String,Object>> runSQLQuery(String sql)throws SQLException{
         statement=connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
