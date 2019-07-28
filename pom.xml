@@ -215,8 +215,23 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
 
     </dependencies>
+
+
+    <repositories>
+        <repository>
+             <id>oracle</id>
+            <url>http://www.datanucleus.org/downloads/maven2/</url>
+        </repository>
+
+    </repositories>
 
 
 
