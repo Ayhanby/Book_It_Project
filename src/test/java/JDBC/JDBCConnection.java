@@ -11,6 +11,8 @@ public class JDBCConnection {
     String  oracledbUsername="hr";
     String  oraclePassword="hr";
 
+
+
     @Test
     public void oracleJDBC() throws SQLException, ClassNotFoundException {
 
@@ -20,8 +22,12 @@ public class JDBCConnection {
         Statement statement=connection.createStatement();
         ResultSet resultSet=statement.executeQuery("select * from countries");
 
-        resultSet.next();
-        System.out.println(resultSet.getString("country_name"));
+        while(resultSet.next()){
+
+            System.out.println(resultSet.getString(1)+"-"+resultSet.getString("country_name")+"-"+resultSet.getString("region_id"));
+
+        }
+
 
         resultSet.close();
         statement.close();
