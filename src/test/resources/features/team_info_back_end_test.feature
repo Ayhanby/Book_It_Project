@@ -17,7 +17,7 @@ Feature: Team information back end
       Then all the clusters ids must be from the clusters table
 
 
-    @wip @db
+   @db
     Scenario: Verify user information per database
 
       Given user on the login page
@@ -25,3 +25,11 @@ Feature: Team information back end
       And user clicks the login button
       When user goes to the "my self" page
       Then correct user information should be displayed for "jrowesby8h@google.co.uk"
+
+
+    @wip @db
+    Scenario: Verify any user login
+
+      Given user on the login page
+      When user logs in any user
+      Then homepage should be displayed

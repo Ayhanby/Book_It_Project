@@ -1,16 +1,19 @@
 package com.BookIt.step_definitions;
 
 import com.BookIt.pages.HomePage;
+import com.BookIt.pages.LoginPage;
 import com.BookIt.pages.MyTeamPage;
 import com.BookIt.utilities.BrowserUtils;
 import com.BookIt.utilities.DBUtility;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class TeamInfoBackEndStepDefinitions {
 
@@ -98,6 +101,34 @@ public class TeamInfoBackEndStepDefinitions {
 
         Assert.assertEquals(eName,homePage.selfName.getText());
         Assert.assertEquals(eTeam,homePage.selfTeam.getText());
+
+    }
+
+
+    @When("user logs in any user")
+    public void user_logs_in_any_user() {
+
+        //get the size of the table
+
+        Long count=(Long)DBUtility.getCellValue("select count (*) from users ");
+        System.out.println(count);
+        //generate random number in that scope
+
+        Random random=new Random();
+        double rand=Math.random()*count+1;
+        System.out.println("rand:"+rand);
+        //get random row using that number
+        String sql="select firstname, lastname, email  from users limit 1 offset "+rand+";";
+        Map<String,Object> userInfo=DBUtility.getRowMap(sql);
+        System.out.println(userInfo);
+        String password=((String)userInfo.get("firstname")+userInfo.get("lastname")).toLowerCase();
+        String email=(String)userInfo.get("email");
+        System.out.println("password:"+password);
+        System.out.println("email:"+email);
+
+        LoginPage loginPage=new LoginPage();
+        loginPage.logIn(email,password);
+
 
     }
 
