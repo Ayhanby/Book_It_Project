@@ -13,7 +13,7 @@ public class DBTestBase {
     @BeforeMethod
     public void setUp() throws SQLException,ClassNotFoundException{
 
-        DBUtility.establishConnection(DBType.POSTGRESQL);
+        DBUtility.createConnection();
 
     }
 

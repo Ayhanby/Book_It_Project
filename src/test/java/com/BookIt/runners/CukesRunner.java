@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-       // features = "@target/rerun.txt",
+        // features = "@target/rerun.txt",
 
         plugin = {
                 "json:target/json-reports/cucumber.json",
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 
         features = "src/test/resources/features/",
         glue = "com/BookIt/step_definitions/",
-        dryRun=true,
+        dryRun=false,
         tags = "@wip"
 
 

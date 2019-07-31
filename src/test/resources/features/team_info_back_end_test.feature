@@ -1,6 +1,6 @@
 Feature: Team information back end
 
-  @wip
+  @wip @db
   Scenario: Team members database test
 
     Given user on the login page

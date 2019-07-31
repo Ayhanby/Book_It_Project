@@ -13,8 +13,7 @@ public class test {
 
 
 
-
-        int rowCount= DBUtility.getRowsCount("select * from employees where job_id='IT_PROG'");
+        int rowCount= DBUtility.getRowCount("select * from employees where job_id='IT_PROG'");
         Assert.assertTrue(rowCount>0);
 
 

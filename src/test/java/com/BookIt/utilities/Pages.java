@@ -9,6 +9,7 @@ public class Pages {
     public LoginPage loginPage;
     public HomePage homePage;
     protected EmployeesFormPage employeesFormPage;
+
     public HomePage homePage(){
         homePage=new HomePage();
         return homePage;

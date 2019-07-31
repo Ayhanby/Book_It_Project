@@ -1,5 +1,6 @@
 package com.BookIt.step_definitions;
 
+import com.BookIt.utilities.DBUtility;
 import com.BookIt.utilities.Driver;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -10,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
+
 
 
 
@@ -26,6 +28,16 @@ public class Hooks {
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    @Before(value = "@db")
+    public void setUpDBConnection(){
+        DBUtility.createConnection();
+    }
+
+    @After(value = "@db")
+    public void closeConnection(){
+        DBUtility.closeConnection();
+    }
+
     @After
     public void tearDown(Scenario scenario)throws InterruptedException{
         System.out.println("I am reporting the result");
@@ -38,7 +50,6 @@ public class Hooks {
         System.out.println("Closing Driver");
         Thread.sleep(10000);
         Driver.closeDriver();
-
     }
 
 
