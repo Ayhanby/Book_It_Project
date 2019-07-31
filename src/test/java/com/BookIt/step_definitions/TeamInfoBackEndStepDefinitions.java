@@ -1,5 +1,6 @@
 package com.BookIt.step_definitions;
 
+import com.BookIt.pages.HomePage;
 import com.BookIt.pages.MyTeamPage;
 import com.BookIt.utilities.BrowserUtils;
 import com.BookIt.utilities.DBUtility;
@@ -9,6 +10,7 @@ import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class TeamInfoBackEndStepDefinitions {
 
@@ -71,6 +73,32 @@ public class TeamInfoBackEndStepDefinitions {
         for (Object id:roomTable){
             Assert.assertTrue(clusterTable.contains(id));
         }
+    }
+
+
+    @Then("correct user information should be displayed for {string}")
+    public void correct_user_information_should_be_displayed_for(String email) {
+
+        String sql= "SELECT firstname, lastname,t.name " +
+                "FROM users u " +
+                "JOIN team  t " +
+                "ON t.id=u.team_id " +
+                "WHERE email='"+email+"';";
+
+        Map<String ,Object>  userInfo=DBUtility.getRowMap(sql);
+        System.out.println(userInfo);
+
+        String eName=userInfo.get("firstname")+" "+userInfo.get("lastname");
+        String eTeam=userInfo.get("name").toString();
+        HomePage homePage=new HomePage();
+        System.out.println("eName: "+eName);
+        System.out.println("eTeam"+eTeam);
+
+
+
+        Assert.assertEquals(eName,homePage.selfName.getText());
+        Assert.assertEquals(eTeam,homePage.selfTeam.getText());
+
     }
 
 

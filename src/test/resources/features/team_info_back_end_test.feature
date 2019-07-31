@@ -10,8 +10,18 @@ Feature: Team information back end
     And team information should match database records
 
 
-  @wip @db
+   @db
   Scenario: Verify rooms and clusters
       Given there is a list of clusters in the clusters table
       And all rooms have a clusters id in room table
       Then all the clusters ids must be from the clusters table
+
+
+    @wip @db
+    Scenario: Verify user information per database
+
+      Given user on the login page
+      When user logs in using "jrowesby8h@google.co.uk" and "aldridgegrimsdith"
+      And user clicks the login button
+      When user goes to the "my self" page
+      Then correct user information should be displayed for "jrowesby8h@google.co.uk"
