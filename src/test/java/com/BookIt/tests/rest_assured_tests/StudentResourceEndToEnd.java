@@ -87,13 +87,29 @@ public class StudentResourceEndToEnd {
         //verify that id is not empty
         assertThat(dbUder.get("id"),is(notNullValue()));
 
+        // get the user info database using API
+
+        String id=dbUder.get("id").toString();
+        given().
+                log().all().
+                header("Authorization",token).
+                pathParam("id",id).
+                when().
+                get("/api/students/{id}").
+                then().
+                log().all().
+                assertThat().statusCode(200).
+                body("firstName",is(firstName)).
+                body("lastName",is(lastName)).
+                body("role",is(role));
+
 
 
     }
 
     public static Map<String,Object> getDBUser (String email){
         DBUtility.createConnection();
-        String sql="select firstname,lastname,email,id from users where email='"+email+"';";
+        String sql="select firstname,lastname,role,email,id from users where email='"+email+"';";
         Map<String,Object> rowMap=DBUtility.getRowMap(sql);
         DBUtility.closeConnection();
 
