@@ -1,16 +1,21 @@
 package com.BookIt.tests.rest_assured_tests;
 
 import com.BookIt.utilities.BookItRestUtility;
+import com.BookIt.utilities.BrowserUtils;
 import com.BookIt.utilities.DBUtility;
 import com.github.javafaker.Faker;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StudentResourceEndToEnd {
@@ -102,6 +107,15 @@ public class StudentResourceEndToEnd {
                 body("firstName",is(firstName)).
                 body("lastName",is(lastName)).
                 body("role",is(role));
+
+        // verify using UI
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("http://cybertek-reservation-qa.herokuapp.com/sign-in");
+        driver.findElement(By.name("email")).sendKeys(email);
+        driver.findElement(By.name("password")).sendKeys(password+ Keys.ENTER);
+        BrowserUtils.wait(5);
+        assertThat(driver.getCurrentUrl(),endsWith("map"));
 
 
 

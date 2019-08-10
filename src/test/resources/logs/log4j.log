@@ -25,3 +25,4 @@
 2019-08-10 12:50:19 INFO  StudentResourceEndToEnd:79 - {firstname=Denita, role=student-team-member, id=4543, lastname=Feeney}
 2019-08-10 12:55:53 INFO  StudentResourceEndToEnd:82 - {firstname=Nakia, id=4544, email=nakiabarrowsjanyce.osinski@gmail.com, lastname=Barrows}
 2019-08-10 13:18:09 INFO  StudentResourceEndToEnd:82 - {firstname=Alesha, role=student-team-member, id=4545, email=aleshahowellalverta.bauch@hotmail.com, lastname=Howell}
+2019-08-10 13:39:36 INFO  StudentResourceEndToEnd:87 - {firstname=Jonas, role=student-team-member, id=4546, email=jonasrolfsonlyndsay.pfannerstill@gmail.com, lastname=Rolfson}
