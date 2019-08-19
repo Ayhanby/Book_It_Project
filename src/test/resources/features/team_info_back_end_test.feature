@@ -27,7 +27,7 @@ Feature: Team information back end
       Then correct user information should be displayed for "jrowesby8h@google.co.uk"
 
 
-    @wip @db
+     @db
     Scenario: Verify any user login
 
       Given user on the login page
