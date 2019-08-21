@@ -1,5 +1,6 @@
 package com.BookIt.step_definitions;
 
+import com.BookIt.pages.HomePage;
 import com.BookIt.pages.LoginPage;
 import com.BookIt.utilities.ApplicationConstants;
 import com.BookIt.utilities.ConfigurationReader;
@@ -24,9 +25,14 @@ public class LoginPageStepDefinitions {
         System.out.println("I am logging in as team lead");
     }
 
-    @When("user logs in as team member")
-    public void user_logs_in_as_team_member() {
+
+
+    @When("user logs in as {string} and {string}")
+    public void user_logs_in_as_and(String username, String password) {
         System.out.println("I am logging in as team member");
+        LoginPage loginPage=new LoginPage();
+        loginPage.username.sendKeys(username);
+        loginPage.password.sendKeys(password);
     }
 
     @When("user logs in as teacher")
@@ -46,6 +52,8 @@ public class LoginPageStepDefinitions {
     @Then("homepage should be displayed")
     public void homepage_should_be_displayed() {
         System.out.println("I am seeing the homepage");
+        HomePage homePage=new HomePage();
+        Assert.assertEquals(homePage.map.getText(),"map");
     }
 
     @And("title should be correct")

@@ -16,7 +16,7 @@ Feature: Login Page
   @member
   Scenario: Login as team member
 
-    When  user logs in as team member
+    When  user logs in as "jrowesby8h@google.co.uk" and "aldridgegrimsdith"
     And  clicks on login button
     Then homepage should be displayed
     And  title should be correct
